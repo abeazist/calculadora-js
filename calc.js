@@ -110,7 +110,41 @@ executada
  * - Atualizar o display
  */
 function executaCalculo(calculadora) {
-  
+
+  if (calculadora.operador == "+") {
+    resultado = parseFloat(calculadora.operandoAnterior)+ parseFloat(calculadora.operandoAtual)
+    calculadora.operandoAtual= resultado
+    calculadora.operandoAnterior= ""
+    calculadora.operador= ""
+    atualizaDisplay(calculadora) 
+  }
+  else if (calculadora.operador == "÷"){
+    resultado = parseFloat(calculadora.operandoAnterior)/parseFloat(calculadora.operandoAtual)
+    calculadora.operandoAtual= resultado
+    calculadora.operandoAnterior= ""
+    calculadora.operador= ""
+    atualizaDisplay(calculadora) 
+    
+  }
+  else if (calculadora.operador == "-"){
+    resultado = parseFloat(calculadora.operandoAnterior)-parseFloat(calculadora.operandoAtual)
+    calculadora.operandoAtual= resultado
+    calculadora.operandoAnterior= ""
+    calculadora.operador= ""
+    atualizaDisplay(calculadora) 
+    
+  }
+  else if (calculadora.operador == "*"){
+    resultado = parseFloat(calculadora.operandoAnterior)*parseFloat(calculadora.operandoAtual)
+    calculadora.operandoAtual= resultado
+    calculadora.operandoAnterior= ""
+    calculadora.operador= ""
+    atualizaDisplay(calculadora) 
+    
+  }
+
+
+
 }
 
 /* Função chamada quando o botão delete for pressionado
