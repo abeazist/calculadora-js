@@ -64,7 +64,7 @@ for (let btn of btnOperacoes) {
  *  O elemento display é atualizado com o atributo operandoAtual
  */
 function atualizaDisplay(calculadora) {
-  calculadora.bufferTextoElemento.innerHTML = calculadora.operandoAnterior;
+  calculadora.bufferTextoElemento.innerHTML = calculadora.operandoAnterior+ calculadora.operador;
   calculadora.displayTextoElemento.innerHTML = calculadora.operandoAtual;
 }
 
@@ -103,14 +103,22 @@ function escolheOperador(calculadora, operador) {
   atualizaDisplay(calculadora)
 }
 /* A função recebe o objeto calculadora e executa o calculo
- * - Verificar a operação a ser executada
+ * - Verificar a operação a ser   apagaDigito(calculadora)
+executada
  * - Executar a operação
  * - Atualizar os atributos operador, operandoAnterior e operandoAtual
  * - Atualizar o display
  */
-function executaCalculo(calculadora) {}
+function executaCalculo(calculadora) {
+  
+}
 
 /* Função chamada quando o botão delete for pressionado
  * Apaga o último dígito digitado no
  */
-function apagaDigito(calculadora) {}
+function apagaDigito(calculadora) {
+  calculadora.operandoAtual = calculadora.operandoAtual.slice(0,-1)
+
+  atualizaDisplay(calculadora)
+  
+}
