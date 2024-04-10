@@ -84,6 +84,11 @@ function limpaVariaveis(calculadora) {
  * O dígito "." deve receber um tratamento especial
  */
 function adicionaNumero(calculadora, numero) {
+  if (calculadora.operandoAtual.includes(".")){
+    return calculadora.adicionaNumero
+    
+    
+  }
   calculadora.operandoAtual = calculadora.operandoAtual + numero;
   atualizaDisplay(calculadora);
 }
@@ -110,7 +115,6 @@ executada
  * - Atualizar o display
  */
 function executaCalculo(calculadora) {
-
   if (calculadora.operador == "+") {
     resultado = parseFloat(calculadora.operandoAnterior)+ parseFloat(calculadora.operandoAtual)
     calculadora.operandoAtual= resultado
@@ -142,7 +146,6 @@ function executaCalculo(calculadora) {
     atualizaDisplay(calculadora) 
     
   }
-
 
 
 }
