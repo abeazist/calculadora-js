@@ -37,6 +37,8 @@ btnDelete.addEventListener("click", () => {
 // Botão de igual
 btnIgual.addEventListener("click", () => {
   executaCalculo(calculadora);
+  calculadora.operador = "=";
+ 
 });
 
 // Botões dos números
@@ -102,11 +104,10 @@ function adicionaNumero(calculadora, numero) {
  */
 function escolheOperador(calculadora, operador) {
   if (calculadora.operandoAtual == "") return alert("Formato inválido")
-  else if (calculadora.operador.includes(operador)) {
-    return
+  if (calculadora.operandoAnterior != ""){
+    executaCalculo(calculadora)
   }
   calculadora.operandoAnterior = calculadora.operandoAtual
-  
   calculadora.operandoAtual = ""
   calculadora.operador = operador
   atualizaDisplay(calculadora)
@@ -119,37 +120,25 @@ executada
  * - Atualizar o display
  */
 function executaCalculo(calculadora) {
+  let resultado;
+
   if (calculadora.operador == "+") {
     resultado = parseFloat(calculadora.operandoAnterior)+ parseFloat(calculadora.operandoAtual)
-    calculadora.operandoAtual= resultado
-    calculadora.operandoAnterior= ""
-    calculadora.operador= ""
-    atualizaDisplay(calculadora) 
   }
   else if (calculadora.operador == "÷"){
     resultado = parseFloat(calculadora.operandoAnterior)/parseFloat(calculadora.operandoAtual)
-    calculadora.operandoAtual= resultado
-    calculadora.operandoAnterior= ""
-    calculadora.operador= ""
-    atualizaDisplay(calculadora) 
-    
   }
   else if (calculadora.operador == "-"){
-    resultado = parseFloat(calculadora.operandoAnterior)-parseFloat(calculadora.operandoAtual)
-    calculadora.operandoAtual= resultado
-    calculadora.operandoAnterior= ""
-    calculadora.operador= ""
-    atualizaDisplay(calculadora) 
-    
+    resultado = parseFloat(calculadora.operandoAnterior)-parseFloat(calculadora.operandoAtual)  
   }
   else if (calculadora.operador == "*"){
     resultado = parseFloat(calculadora.operandoAnterior)*parseFloat(calculadora.operandoAtual)
-    calculadora.operandoAtual= resultado
-    calculadora.operandoAnterior= ""
-    calculadora.operador= ""
-    atualizaDisplay(calculadora) 
     
   }
+  calculadora.operandoAtual= String(resultado)
+  calculadora.operandoAnterior= ""
+  calculadora.operador= ""
+  atualizaDisplay(calculadora) 
 
 
 }
