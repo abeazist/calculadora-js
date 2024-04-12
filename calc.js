@@ -84,10 +84,9 @@ function limpaVariaveis(calculadora) {
  * O dígito "." deve receber um tratamento especial
  */
 function adicionaNumero(calculadora, numero) {
-  if (calculadora.operandoAtual.includes(".")){
-    return calculadora.adicionaNumero
-    
-    
+  if (numero === "." && calculadora.operandoAtual.includes(".")){
+    return 
+      
   }
   calculadora.operandoAtual = calculadora.operandoAtual + numero;
   atualizaDisplay(calculadora);
@@ -102,7 +101,12 @@ function adicionaNumero(calculadora, numero) {
  * - copiar operandoAtual para o operandoAnterior, deixando a calculadora preparada para receber o próximo número
  */
 function escolheOperador(calculadora, operador) {
+  if (calculadora.operandoAtual == "") return alert("Formato inválido")
+  else if (calculadora.operador.includes(operador)) {
+    return
+  }
   calculadora.operandoAnterior = calculadora.operandoAtual
+  
   calculadora.operandoAtual = ""
   calculadora.operador = operador
   atualizaDisplay(calculadora)
